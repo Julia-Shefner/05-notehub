@@ -19,7 +19,8 @@ function App() {
   const closeModal = () => setIsModalOpen(false);
   const handleSearch = useDebouncedCallback((value: string) => {
     setSearch(value);
-  }, 1000);
+    setPage(1);
+  }, 400);
   const { data, isLoading, isError } = useQuery({
     queryKey: ["notes", page, search],
     queryFn: () => fetchNotes({ page, search }),
