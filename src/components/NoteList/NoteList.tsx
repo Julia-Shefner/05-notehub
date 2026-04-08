@@ -1,27 +1,7 @@
 import css from "./NoteList.module.css";
-// import type { Note } from "../../types/note";
+import type { Note } from "../../types/note";
 import { deleteNote } from "../../services/noteService";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-
-export interface Note {
-  id: string;
-  title: string;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-  tag: string;
-}
-
-export interface CreateNote {
-  title: string;
-  content: string;
-  tag: string;
-}
-
-export interface UpdateNote {
-  id: string;
-}
-
 interface NoteListProps {
   notes: Note[];
 }
