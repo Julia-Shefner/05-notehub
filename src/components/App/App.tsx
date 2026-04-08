@@ -1,7 +1,7 @@
 import css from "./App.module.css";
 import NoteList from "../NoteList/NoteList";
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { fetchNotes } from "../../services/noteService";
 import Pagination from "../Pagination/Pagination";
 import Loader from "../Loader/Loader";
@@ -24,6 +24,7 @@ function App() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["notes", page, search],
     queryFn: () => fetchNotes({ page, search }),
+    placeholderData: keepPreviousData,
   });
   const notes = data?.notes ?? [];
   const totalPages = data?.totalPages ?? 0;
